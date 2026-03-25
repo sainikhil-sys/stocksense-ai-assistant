@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
+import { lovable } from '@/integrations/lovable/index';
 import { motion } from 'framer-motion';
 import { Zap, Eye, EyeOff } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
