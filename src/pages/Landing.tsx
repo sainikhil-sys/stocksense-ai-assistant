@@ -102,7 +102,7 @@ const Landing = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="h-3 w-3 rounded-full bg-loss" />
-                  <div className="h-3 w-3 rounded-full bg-yellow-500" />
+                  <div className="h-3 w-3 rounded-full bg-muted-foreground" />
                   <div className="h-3 w-3 rounded-full bg-gain" />
                 </div>
                 <span className="text-xs text-muted-foreground">StockSense Dashboard</span>
