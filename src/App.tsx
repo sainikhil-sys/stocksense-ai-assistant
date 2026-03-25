@@ -13,6 +13,7 @@ import Signals from "./pages/Signals";
 import AIChat from "./pages/AIChat";
 import Auth from "./pages/Auth";
 import ResetPassword from "./pages/ResetPassword";
+import Landing from "./pages/Landing";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,24 +29,27 @@ function AppRoutes() {
     );
   }
 
-  if (!user) return <Auth />;
-
   return (
     <Routes>
       <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="*" element={
-        <AppLayout>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/stocks" element={<Stocks />} />
-            <Route path="/stocks/:symbol" element={<StockDetail />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/signals" element={<Signals />} />
-            <Route path="/ai-chat" element={<AIChat />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AppLayout>
-      } />
+      <Route path="/auth" element={user ? <Dashboard /> : <Auth />} />
+      {!user ? (
+        <Route path="*" element={<Landing />} />
+      ) : (
+        <Route path="*" element={
+          <AppLayout>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/stocks" element={<Stocks />} />
+              <Route path="/stocks/:symbol" element={<StockDetail />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/signals" element={<Signals />} />
+              <Route path="/ai-chat" element={<AIChat />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AppLayout>
+        } />
+      )}
     </Routes>
   );
 }

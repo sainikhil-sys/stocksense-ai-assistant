@@ -7,7 +7,8 @@ import { Zap, Eye, EyeOff, ArrowLeft } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const Auth = () => {
-  const [view, setView] = useState<'login' | 'signup' | 'forgot'>('login');
+  const params = new URLSearchParams(window.location.search);
+  const [view, setView] = useState<'login' | 'signup' | 'forgot'>(params.get('signup') ? 'signup' : 'login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
