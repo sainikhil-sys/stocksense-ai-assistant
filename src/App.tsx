@@ -12,6 +12,7 @@ import Portfolio from "./pages/Portfolio";
 import Signals from "./pages/Signals";
 import AIChat from "./pages/AIChat";
 import Auth from "./pages/Auth";
+import ResetPassword from "./pages/ResetPassword";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
