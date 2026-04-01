@@ -50,6 +50,9 @@ function AppRoutes() {
               <Route path="/signals" element={<Signals />} />
               <Route path="/ai-chat" element={<AIChat />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/bank-details" element={<BankDetails />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AppLayout>
