@@ -1,4 +1,4 @@
-import { LayoutDashboard, LineChart, Briefcase, Zap, MessageSquare, LogOut, UserCircle } from 'lucide-react';
+import { LayoutDashboard, LineChart, Briefcase, Zap, MessageSquare, LogOut, UserCircle, Building2, Crown } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
@@ -21,6 +21,8 @@ const navItems = [
   { title: 'Portfolio', url: '/portfolio', icon: Briefcase },
   { title: 'Signals', url: '/signals', icon: Zap },
   { title: 'AI Assistant', url: '/ai-chat', icon: MessageSquare },
+  { title: 'Bank Accounts', url: '/bank-details', icon: Building2 },
+  { title: 'Pricing', url: '/pricing', icon: Crown },
   { title: 'Profile', url: '/profile', icon: UserCircle },
 ];
 
