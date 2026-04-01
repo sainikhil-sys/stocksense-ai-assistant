@@ -1,10 +1,12 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { STOCKS, SIGNALS, generateChartData } from '@/lib/mock-data';
 import { motion } from 'framer-motion';
-import { ArrowLeft, TrendingUp, TrendingDown, Activity, BarChart3, Newspaper, Brain } from 'lucide-react';
+import { ArrowLeft, TrendingUp, TrendingDown, Activity, BarChart3, Brain } from 'lucide-react';
 import { AreaChart, Area, ResponsiveContainer, XAxis, YAxis, Tooltip, BarChart, Bar } from 'recharts';
 import { useMemo, useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Button } from '@/components/ui/button';
+import { TradeDialog } from '@/components/TradeDialog';
 
 const StockDetail = () => {
   const { symbol } = useParams<{ symbol: string }>();
