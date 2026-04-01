@@ -1,10 +1,12 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { STOCKS, SIGNALS, generateChartData } from '@/lib/mock-data';
 import { motion } from 'framer-motion';
-import { ArrowLeft, TrendingUp, TrendingDown, Activity, BarChart3, Newspaper, Brain } from 'lucide-react';
+import { ArrowLeft, TrendingUp, TrendingDown, Activity, BarChart3, Brain } from 'lucide-react';
 import { AreaChart, Area, ResponsiveContainer, XAxis, YAxis, Tooltip, BarChart, Bar } from 'recharts';
 import { useMemo, useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Button } from '@/components/ui/button';
+import { TradeDialog } from '@/components/TradeDialog';
 
 const StockDetail = () => {
   const { symbol } = useParams<{ symbol: string }>();
@@ -13,6 +15,8 @@ const StockDetail = () => {
   const chartData = useMemo(() => generateChartData(60), []);
   const signals = SIGNALS.filter(s => s.stockSymbol === symbol);
   const [period, setPeriod] = useState('1M');
+  const [tradeMode, setTradeMode] = useState<'BUY' | 'SELL'>('BUY');
+  const [tradeOpen, setTradeOpen] = useState(false);
 
   if (!stock) {
     return (
@@ -42,11 +46,21 @@ const StockDetail = () => {
       </div>
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card rounded-xl p-6">
-        <div className="flex items-end gap-4 mb-6">
-          <span className="text-4xl font-mono font-bold text-foreground">₹{stock.price.toLocaleString('en-IN')}</span>
-          <div className={`flex items-center gap-1 text-lg font-mono ${isPositive ? 'text-gain' : 'text-loss'}`}>
-            {isPositive ? <TrendingUp className="h-5 w-5" /> : <TrendingDown className="h-5 w-5" />}
-            {isPositive ? '+' : ''}{stock.change.toFixed(2)} ({stock.changePercent.toFixed(2)}%)
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-end gap-4">
+            <span className="text-4xl font-mono font-bold text-foreground">₹{stock.price.toLocaleString('en-IN')}</span>
+            <div className={`flex items-center gap-1 text-lg font-mono ${isPositive ? 'text-gain' : 'text-loss'}`}>
+              {isPositive ? <TrendingUp className="h-5 w-5" /> : <TrendingDown className="h-5 w-5" />}
+              {isPositive ? '+' : ''}{stock.change.toFixed(2)} ({stock.changePercent.toFixed(2)}%)
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Button onClick={() => { setTradeMode('BUY'); setTradeOpen(true); }} className="bg-[hsl(var(--gain))] hover:bg-[hsl(var(--gain))]/90 text-background font-semibold px-6">
+              Buy
+            </Button>
+            <Button onClick={() => { setTradeMode('SELL'); setTradeOpen(true); }} className="bg-[hsl(var(--loss))] hover:bg-[hsl(var(--loss))]/90 text-white font-semibold px-6">
+              Sell
+            </Button>
           </div>
         </div>
 
@@ -157,6 +171,14 @@ const StockDetail = () => {
           )}
         </TabsContent>
       </Tabs>
+      {stock && (
+        <TradeDialog
+          open={tradeOpen}
+          onOpenChange={setTradeOpen}
+          stock={{ symbol: stock.symbol, name: stock.name, price: stock.price }}
+          mode={tradeMode}
+        />
+      )}
     </div>
   );
 };

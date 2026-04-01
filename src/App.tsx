@@ -11,6 +11,7 @@ import StockDetail from "./pages/StockDetail";
 import Portfolio from "./pages/Portfolio";
 import Signals from "./pages/Signals";
 import AIChat from "./pages/AIChat";
+import Profile from "./pages/Profile";
 import Auth from "./pages/Auth";
 import ResetPassword from "./pages/ResetPassword";
 import Landing from "./pages/Landing";
@@ -45,6 +46,7 @@ function AppRoutes() {
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/signals" element={<Signals />} />
               <Route path="/ai-chat" element={<AIChat />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AppLayout>
