@@ -46,6 +46,7 @@ function AppRoutes() {
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/signals" element={<Signals />} />
               <Route path="/ai-chat" element={<AIChat />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AppLayout>

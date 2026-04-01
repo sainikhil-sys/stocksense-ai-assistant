@@ -171,6 +171,14 @@ const StockDetail = () => {
           )}
         </TabsContent>
       </Tabs>
+      {stock && (
+        <TradeDialog
+          open={tradeOpen}
+          onOpenChange={setTradeOpen}
+          stock={{ symbol: stock.symbol, name: stock.name, price: stock.price }}
+          mode={tradeMode}
+        />
+      )}
     </div>
   );
 };
