@@ -33,9 +33,7 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon" className="border-r border-border">
       <div className="p-4 flex items-center gap-3">
-        <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
-          <Zap className="h-4 w-4 text-primary-foreground" />
-        </div>
+        <img src={stocksenseLogo} alt="StockSense" className="h-8 w-8 shrink-0 rounded-lg" width={32} height={32} />
         {!collapsed && (
           <span className="font-heading font-bold text-lg text-foreground tracking-tight">
             StockSense
