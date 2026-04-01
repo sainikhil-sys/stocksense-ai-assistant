@@ -46,11 +46,21 @@ const StockDetail = () => {
       </div>
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card rounded-xl p-6">
-        <div className="flex items-end gap-4 mb-6">
-          <span className="text-4xl font-mono font-bold text-foreground">₹{stock.price.toLocaleString('en-IN')}</span>
-          <div className={`flex items-center gap-1 text-lg font-mono ${isPositive ? 'text-gain' : 'text-loss'}`}>
-            {isPositive ? <TrendingUp className="h-5 w-5" /> : <TrendingDown className="h-5 w-5" />}
-            {isPositive ? '+' : ''}{stock.change.toFixed(2)} ({stock.changePercent.toFixed(2)}%)
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-end gap-4">
+            <span className="text-4xl font-mono font-bold text-foreground">₹{stock.price.toLocaleString('en-IN')}</span>
+            <div className={`flex items-center gap-1 text-lg font-mono ${isPositive ? 'text-gain' : 'text-loss'}`}>
+              {isPositive ? <TrendingUp className="h-5 w-5" /> : <TrendingDown className="h-5 w-5" />}
+              {isPositive ? '+' : ''}{stock.change.toFixed(2)} ({stock.changePercent.toFixed(2)}%)
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Button onClick={() => { setTradeMode('BUY'); setTradeOpen(true); }} className="bg-[hsl(var(--gain))] hover:bg-[hsl(var(--gain))]/90 text-background font-semibold px-6">
+              Buy
+            </Button>
+            <Button onClick={() => { setTradeMode('SELL'); setTradeOpen(true); }} className="bg-[hsl(var(--loss))] hover:bg-[hsl(var(--loss))]/90 text-white font-semibold px-6">
+              Sell
+            </Button>
           </div>
         </div>
 
