@@ -15,6 +15,8 @@ const StockDetail = () => {
   const chartData = useMemo(() => generateChartData(60), []);
   const signals = SIGNALS.filter(s => s.stockSymbol === symbol);
   const [period, setPeriod] = useState('1M');
+  const [tradeMode, setTradeMode] = useState<'BUY' | 'SELL'>('BUY');
+  const [tradeOpen, setTradeOpen] = useState(false);
 
   if (!stock) {
     return (
