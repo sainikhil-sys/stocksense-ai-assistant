@@ -11,6 +11,7 @@ import StockDetail from "./pages/StockDetail";
 import Portfolio from "./pages/Portfolio";
 import Signals from "./pages/Signals";
 import AIChat from "./pages/AIChat";
+import Profile from "./pages/Profile";
 import Auth from "./pages/Auth";
 import ResetPassword from "./pages/ResetPassword";
 import Landing from "./pages/Landing";
